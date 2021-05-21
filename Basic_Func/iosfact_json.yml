@@ -1,0 +1,42 @@
+# backup running configuration
+
+---
+
+- name: Uses ansible_date_time fact to get system time and save it a variable
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Get date from system
+      shell: "date +%Y-%m-%d%H-%M-%S"
+      register: dstamp
+
+    - name: create folder
+      file:
+        path: ~/ansible_test/configur_backup/{{dstamp.stdout[0:10]}}
+        state: directory
+
+
+    - name: define variable
+      set_fact:
+        today: "{{dstamp.stdout[0:10]}}"
+        time: "{{dstamp.stdout[10:]}}"
+
+
+
+- name: Get ios_fact and save with json format
+  hosts: IOS
+  gather_facts: false
+
+
+  tasks:
+    - name: run command on remote hosts
+      ios_facts:
+        
+      register: output
+
+    - name: save to file
+      template:
+        src: ios_fact.j2
+        dest: "~/ansible_test/configur_backup/{{hostvars.localhost.today}}/{{inventory_hostname}}_{{hostvars.localhost.time}}.json"
