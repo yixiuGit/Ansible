@@ -1,0 +1,57 @@
+{
+
+	  "hostname": "{{ ansible_net_hostname }}",
+
+	  "data": {
+
+	      "name": "{{ ansible_net_hostname }}",
+
+	      "serial_number": "{{ ansible_net_serialnum }}",
+
+	      "ios_version": "{{ ansible_net_version }}",
+
+	      "system": "{{ ansible_net_system }}",
+
+	      "model": "{{ ansible_net_model }}",
+
+	      "image": "{{ ansible_net_image }}",
+
+	      "file_systems": "{{ ansible_net_filesystems }}",
+
+	      "file_system_info": "{{ ansible_net_filesystems_info }}",
+
+	      "subset": "{{ ansible_net_gather_subset }}",
+
+	      "memory_total": "{{ ansible_net_memtotal_mb }}",
+
+	      "memory_free": "{{ ansible_net_memfree_mb }}",
+
+	      "api": "{{ ansible_net_api }}",
+
+	      "python_version": "{{ ansible_net_python_version }}",
+
+	      "ios_type": "{{ ansible_net_iostype }}",
+
+	{% if ansible_net_stacked_models is defined %}
+
+	      "switch_stack_models": "{{ ansible_net_stacked_models }}",
+
+	{% endif %}
+
+	{% if ansible_net_stacked_serialnums is defined %}
+
+	      "switch_stack_serial_numbers": "{{ ansible_net_stacked_serialnums }}",
+
+	{% endif %}
+
+	      "ipv4_addresses": "{{ ansible_net_all_ipv4_addresses }}",
+
+	      "ipv6_addresses": "{{ ansible_net_all_ipv6_addresses }}",
+
+	      "neighbors": "{{ ansible_net_neighbors }}",
+
+	      "interfaces": "{{ ansible_net_interfaces }}"
+
+	     }
+
+	}
