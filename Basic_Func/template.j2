@@ -1,0 +1,8 @@
+OUTPUT FROM SHOW COMMAND for: {{inventory_hostname}}
+
+{% for cmd in command_list %}
+###########{{cmd}}###########
+
+{{output.stdout[loop.index0]}}
+
+{%endfor%}
