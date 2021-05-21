@@ -1,0 +1,33 @@
+---
+
+- name: Check device free space
+  hosts: IOS
+  gather_facts: false
+  vars:
+    image_size: 1234567
+
+  tasks:
+
+    - name: Get Facts
+      ios_facts:
+      # register: output
+    - name: Free space on flash0
+      set_fact:
+        free_space: "{{ansible_net_filesystems_info['flash0:']['spacefree_kb']|int}}"
+      when: ansible_net_filesystems_info['flash0:'] is defined
+
+    - name: Total space on falsh0
+      set_fact:
+        total_space: "{{ansible_net_filesystems_info['flash0:']['spacetotal_kb']|int}}"
+      when: ansible_net_filesystems_info['flash0:'] is defined
+
+    - name: Get remaining space
+      set_fact:
+        remaining_space: "{{free_space|int - image_size|int}}"
+
+    - name: Check space
+      assert:
+        that:
+          - "{{remaining_space}} > 0"
+        fail_msg: "not enough space for upgrade"
+        success_msg: "good to go"
