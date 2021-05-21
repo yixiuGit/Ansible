@@ -12,17 +12,6 @@
       shell: "date +%Y-%m-%d%H-%M-%S"
       register: dstamp
 
-# another way to collect system date and time
-    # - name: get time
-    #   setup:
-    #     filter: ansible_date_time
-    #   # register: output
-    #
-    # - name: set fact
-    #   set_fact:
-    #     DATE: "{{ansible_date_time.date}}"
-    #     TIME: "{{ansible_date_time.time}}"
-
     - name: create folder
       file:
         path: ~/ansible_test/configur_backup/{{dstamp.stdout[0:10]}}
@@ -38,20 +27,8 @@
 
 - name: Backup router running configuration
   hosts: IOS
-  gather_facts: false
-
-  vars:
-    command_list:
-      - show version
-      - show running
 
   tasks:
-    - name: run command on remote hosts
-      ios_command:
-        commands: "{{command_list}}"
-
-      register: output
-
     - name: save to file
       ios_config:
         backup: yes
