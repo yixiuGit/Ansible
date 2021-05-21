@@ -1,0 +1,25 @@
+---
+
+- name: Check IOS version
+  hosts: IOSv
+  gather_facts: false
+
+  tasks:
+
+    - name: run command on remote hosts
+      ios_facts:
+
+    - name: print
+      debug:
+        msg: "{{ansible_net_version}}"
+
+    - name: check upgrade status
+
+      vars:
+        upgraded_ios_version: 15.6(1)T
+
+      assert:
+        that:
+          upgraded_ios_version == ansible_net_version
+        fail_msg: "upgrade failed"
+        success_msg: "upgrade success"
