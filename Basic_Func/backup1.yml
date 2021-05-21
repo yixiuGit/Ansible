@@ -28,7 +28,6 @@
         path: ~/ansible_test/configur_backup/{{dstamp.stdout[0:10]}}
         state: directory
 
-
     - name: define variable
       set_fact:
         today: "{{dstamp.stdout[0:10]}}"
