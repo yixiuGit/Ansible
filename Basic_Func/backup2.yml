@@ -1,0 +1,61 @@
+# backup running configuration
+
+---
+
+- name: Uses ansible_date_time fact to get system time and save it a variable
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Get date from system
+      shell: "date +%Y-%m-%d%H-%M-%S"
+      register: dstamp
+
+# another way to collect system date and time
+    # - name: get time
+    #   setup:
+    #     filter: ansible_date_time
+    #   # register: output
+    #
+    # - name: set fact
+    #   set_fact:
+    #     DATE: "{{ansible_date_time.date}}"
+    #     TIME: "{{ansible_date_time.time}}"
+
+    - name: create folder
+      file:
+        path: ~/ansible_test/configur_backup/{{dstamp.stdout[0:10]}}
+        state: directory
+
+
+    - name: define variable
+      set_fact:
+        today: "{{dstamp.stdout[0:10]}}"
+        time: "{{dstamp.stdout[10:]}}"
+
+
+
+- name: Backup router running configuration
+  hosts: IOS
+  gather_facts: false
+
+  vars:
+    command_list:
+      - show version
+      - show running
+
+  tasks:
+    - name: run command on remote hosts
+      ios_command:
+        commands: "{{command_list}}"
+
+      register: output
+
+# https://devops.stackexchange.com/questions/12851/ansible-multiple-commands-to-a-file
+    - name: save to file
+      lineinfile:
+        create: yes
+        line: "{{item}}"
+        path: "~/ansible_test/configur_backup/{{hostvars.localhost.today}}/{{inventory_hostname}}_{{hostvars.localhost.time}}.txt"
+      with_items: "{{output.stdout}}"
