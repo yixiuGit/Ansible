@@ -1,0 +1,23 @@
+
+---
+
+- name: Uses ansible_date_time fact to get system time and save it a variable
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Get date from system
+      shell: "date +%Y-%m-%d%H-%M-%S"
+      register: dstamp
+
+# another way to collect system date and time
+    # - name: get time
+    #   setup:
+    #     filter: ansible_date_time
+    #   # register: output
+    #
+    # - name: set fact
+    #   set_fact:
+    #     DATE: "{{ansible_date_time.date}}"
+    #     TIME: "{{ansible_date_time.time}}"
