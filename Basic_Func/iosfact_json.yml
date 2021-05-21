@@ -33,7 +33,7 @@
   tasks:
     - name: run command on remote hosts
       ios_facts:
-        
+
       register: output
 
     - name: save to file
