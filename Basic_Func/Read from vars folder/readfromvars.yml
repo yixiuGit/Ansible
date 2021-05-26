@@ -1,0 +1,10 @@
+---
+
+- name: load from vars folder
+  hosts: localhost
+  gather_facts: no
+  vars_files: "./vars/env.yml"
+
+  tasks:
+  - debug:
+      msg: "{{name}}"
