@@ -1,0 +1,16 @@
+---
+
+- name: load variables
+  gather_facts: no
+  hosts: localhost
+
+  tasks:
+    - include_vars: name.yml
+    #
+    # - debug:
+    #     msg: "{{country[0]['AU'][0]['state'][0]}}"
+    - set_fact:
+        country: "{{country[0]}}"
+        state: "{{country[0]['AU'][0]['state'][1]}}"
+    - debug:
+        msg: "{{state}}"
