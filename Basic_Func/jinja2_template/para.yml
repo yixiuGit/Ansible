@@ -1,1 +1,6 @@
-
+---
+vlan_int:
+  # - entries:
+    - {vlan: 10, des: vlan 10, ip_add: 192.168.1.1, mask: 255.255.255.0}
+    - {vlan: 20, des: vlan 20, ip_add: 10.10.1.1, mask: 255.255.255.0}
+    - {vlan: 30, des: vlan 30, ip_add: '', mask: '' }
