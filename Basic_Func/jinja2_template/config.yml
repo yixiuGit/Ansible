@@ -1,0 +1,11 @@
+---
+
+- name: create configuration with template file
+  gather_facts: no
+  hosts: localhost
+  tasks:
+  - include_vars: para.yml
+  - name: save
+    template:
+      src: inter.j2
+      dest: "~/ansible_test/configure_template/conf.txt"
