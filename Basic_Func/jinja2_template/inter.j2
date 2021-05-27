@@ -3,7 +3,7 @@
 interface vlan {{entry.vlan}}
   description {{entry.des}}
   {% if entry.ip_add == '' %}
-  no ip address
+no ip address
   {%else%}
 ip address {{entry.ip_add}} {{entry.mask}}
   {% endif %}
