@@ -16,3 +16,9 @@
         msg:
           - "Key is {{ item.key }} and ipv4 value is {{ item.value.ipv4 }}"
       loop: "{{ ansible_facts.net_interfaces | dict2items}}"
+    - name: get certain data using json_query
+      debug:
+        msg:
+          - "{{ item.key }}"
+          - "{{ item | dict2items | json_query('[].value.ipv4[].address') }}"
+      loop: "{{ ansible_facts.net_interfaces | dict2items}}"
