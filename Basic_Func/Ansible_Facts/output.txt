@@ -1,0 +1,151 @@
+ok: [R1] => {
+    "ansible_facts": {
+        "net_all_ipv4_addresses": [
+            "172.16.58.130",
+            "10.1.1.1",
+            "1.1.1.7",
+            "2.2.2.2",
+            "10.0.0.254"
+        ],
+        "net_all_ipv6_addresses": [],
+        "net_api": "cliconf",
+        "net_filesystems": [
+            "bootflash:"
+        ],
+        "net_filesystems_info": {
+            "bootflash:": {
+                "spacefree_kb": 5232736.0,
+                "spacetotal_kb": 7712692.0
+            }
+        },
+        "net_gather_network_resources": [],
+        "net_gather_subset": [
+            "hardware",
+            "interfaces",
+            "default"
+        ],
+        "net_hostname": "R1",
+        "net_image": "bootflash:packages.conf",
+        "net_interfaces": {
+            "GigabitEthernet1": {
+                "bandwidth": 1000000,
+                "description": "hahaha",
+                "duplex": "Full",
+                "ipv4": [
+                    {
+                        "address": "172.16.58.130",
+                        "subnet": "24"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": "0c59.0873.e100",
+                "mediatype": "RJ45",
+                "mtu": 1500,
+                "operstatus": "up",
+                "type": "CSR vNIC"
+            },
+            "GigabitEthernet2": {
+                "bandwidth": 1000000,
+                "description": "looptest",
+                "duplex": "Full",
+                "ipv4": [],
+                "lineprotocol": "down",
+                "macaddress": "0c59.0873.e101",
+                "mediatype": "RJ45",
+                "mtu": 1500,
+                "operstatus": "administratively down",
+                "type": "CSR vNIC"
+            },
+            "GigabitEthernet3": {
+                "bandwidth": 1000000,
+                "description": null,
+                "duplex": "Full",
+                "ipv4": [
+                    {
+                        "address": "10.1.1.1",
+                        "subnet": "24"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": "0c59.0873.e102",
+                "mediatype": "RJ45",
+                "mtu": 1500,
+                "operstatus": "up",
+                "type": "CSR vNIC"
+            },
+            "GigabitEthernet4": {
+                "bandwidth": 1000000,
+                "description": "looptest",
+                "duplex": "Full",
+                "ipv4": [],
+                "lineprotocol": "down",
+                "macaddress": "0c59.0873.e103",
+                "mediatype": "RJ45",
+                "mtu": 1500,
+                "operstatus": "administratively down",
+                "type": "CSR vNIC"
+            },
+            "Loopback1": {
+                "bandwidth": 8000000,
+                "description": null,
+                "duplex": null,
+                "ipv4": [
+                    {
+                        "address": "1.1.1.7",
+                        "subnet": "32"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": null,
+                "mediatype": null,
+                "mtu": 1514,
+                "operstatus": "up",
+                "type": null
+            },
+            "Loopback2": {
+                "bandwidth": 8000000,
+                "description": null,
+                "duplex": null,
+                "ipv4": [
+                    {
+                        "address": "2.2.2.2",
+                        "subnet": "32"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": null,
+                "mediatype": null,
+                "mtu": 1514,
+                "operstatus": "up",
+                "type": null
+            },
+            "VirtualPortGroup0": {
+                "bandwidth": 750000,
+                "description": null,
+                "duplex": null,
+                "ipv4": [
+                    {
+                        "address": "10.0.0.254",
+                        "subnet": "24"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": "001e.bde1.9abd",
+                "mediatype": null,
+                "mtu": 1500,
+                "operstatus": "up",
+                "type": "Virtual Port Group"
+            }
+        },
+        "net_iostype": "IOS-XE",
+        "net_memfree_mb": 879648.9453125,
+        "net_memtotal_mb": 1225027.140625,
+        "net_model": "CSR1000V",
+        "net_neighbors": {},
+        "net_python_version": "3.6.9",
+        "net_serialnum": "98M2NN99A4Z",
+        "net_system": "ios",
+        "net_version": "16.06.02",
+        "network_resources": {}
+    }
+}
